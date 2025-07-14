@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта смыслов и кластеров</title>
+    <!-- Подключаем Google Fonts для современного шрифта -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Подключаем Font Awesome для иконок (например, для кнопок) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Карта смыслов и ключевых идей участников образовательного мероприятия "Директор на высоте"</h1>
+        <p>Исследуйте взаимосвязи между кластерами и словами по итогам опроса первого дня.</p>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h2>Фильтр по кластерам</h2>
+                <div id="filters" class="cluster-filters">
+                    <!-- Чекбоксы кластеров будут сгенерированы JavaScript -->
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-primary" onclick="resetView()">
+                    <i class="fas fa-redo"></i> Сбросить масштаб
+                </button>
+                <button class="btn btn-secondary" onclick="openHelpModal()">
+                    <i class="fas fa-info-circle"></i> Справка
+                </button>
+            </div>
+        </aside>
+
+        <section class="graph-section">
+            <div id="graph-container" class="graph-container">
+                <!-- Здесь будет отображаться D3.js граф -->
+            </div>
+            <div id="legend" class="legend">
+                <h3>Легенда:</h3>
+                <div class="legend-item">
+                    <span class="legend-color cluster-color"></span>
+                    <span>Кластеры</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color word-color"></span>
+                    <span>Слова-отзывы</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Интерактивная карта смыслов</p>
+    </footer>
+
+    <!-- Модальное окно справки -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeHelpModal()">&times;</span>
+            <h2>Что такое "Карта смыслов"?</h2>
+            <p>Эта интерактивная карта визуализирует ключевые идеи и смыслы, выраженные участниками образовательного мероприятия "Директор на высоте" по итогам опроса первого модуля.</p>
+            <p><strong>Как это работает:</strong></p>
+            <ul>
+                <li><strong>Кластеры (синие плашки):</strong> Это основные тематические группы, которые были выделены на основе ответов участников (например, "Личная мотивация и рост", "Профессиональное развитие").</li>
+                <li><strong>Слова-отзывы (зеленые плашки):</strong> Это конкретные слова или короткие фразы, которые участники использовали в своих ответах.</li>
+                <li><strong>Связи:</strong> Линии показывают, к какому кластеру относится то или иное слово-отзыв.</li>
+            </ul>
+            <p><strong>Возможности карты:</strong></p>
+            <ul>
+                <li><strong>Перетаскивание:</strong> Вы можете перетаскивать плашки, чтобы лучше рассмотреть связи.</li>
+                <li><strong>Масштабирование:</strong> Используйте колесико мыши (или жесты на тачпаде) для увеличения/уменьшения масштаба и перемещения по карте.</li>
+                <li><strong>Фильтрация:</strong> В боковой панели вы можете выбрать, какие кластеры отображать, чтобы сфокусироваться на интересующих темах.</li>
+                <li><strong>Раскрытие текста:</strong> Нажмите на любую зеленую плашку, чтобы увидеть полный текст отзыва, если он был обрезан. Повторный клик или клик по другой плашке схлопнет предыдущую.</li>
+                <li><strong>Подсветка связей:</strong> Наведите курсор на любую плашку, чтобы увидеть, с какими другими элементами она связана.</li>
+            </ul>
+            <p>Мы надеемся, что эта карта поможет вам лучше понять общие настроения и ключевые выводы первого дня мероприятия!</p>
+        </div>
+    </div>
+
+    <!-- Подключаем D3.js библиотеку -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Подключаем данные -->
+    <script src="data.js"></script>
+    <!-- Подключаем основной скрипт для отрисовки графа и интерактивности -->
+    <script src="script.js"></script>
+</body>
+</html>
